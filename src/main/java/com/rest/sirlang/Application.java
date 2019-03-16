@@ -1,4 +1,4 @@
-package com.sirlang;
+package com.rest.sirlang;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
