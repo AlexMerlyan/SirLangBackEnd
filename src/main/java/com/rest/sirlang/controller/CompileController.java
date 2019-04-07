@@ -8,15 +8,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins = {"http://localhost:3001", "http://localhost:3000", "https://sirlang-react.herokuapp.com"})
 @RequestMapping(value = "/compile")
 public class CompileController {
 
@@ -24,7 +22,8 @@ public class CompileController {
     private CompileService compileService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<CompileResponseDto> compileSirlangCode(@RequestBody CompileRequestDto dto) throws IOException, InterruptedException {
+    public ResponseEntity<CompileResponseDto> compileSirlangCode(@RequestBody CompileRequestDto dto)
+            throws IOException, InterruptedException {
         log.info(dto.getSirlangCode());
         final ExecutionResult executionResult = compileService.compile(dto.getSirlangCode());
         return new ResponseEntity<>(new CompileResponseDto(executionResult.getConsoleOutput(), true), HttpStatus.OK);
