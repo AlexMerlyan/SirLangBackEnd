@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @Slf4j
 @RestController
-@CrossOrigin(origins = {"http://localhost:3001", "http://localhost:3000", "https://sirlang-react.herokuapp.com"})
+@CrossOrigin(origins = {"http://localhost:3001", "http://localhost:3000", "https://sirlang-react.herokuapp.com", "https://sirlang.herokuapp.com"})
 @RequestMapping(value = "/compile")
 public class CompileController {
 
